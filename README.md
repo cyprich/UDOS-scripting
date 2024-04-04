@@ -255,15 +255,47 @@ done
 ```
 PS3 - prompt pre výber
 
+# 5 Funkcie
 ```shell
 #!/bin/bash
+# klasicka definicia funkcie
+# argumenty sa nezadavaju?
+sucet() {
+    echo $(($1 + $2))
+    return 0
+}
+
+#polopythonoidna definicia funkcie
+function rozdiel {
+    echo $(($1 - $2))
+    return 0
+}
+
+if test $# -ge  2
+then
+    temp=$(sucet $1 $2)
+    echo "sucet je $temp"
+    temp=$(rozdiel $1 $2)
+    echo "rozdiel je $temp"
+fi
 
 ```
+[funkcie1.sh](./scripts/funkcie1.sh)
 
 ```shell
 #!/bin/bash
+mocnina() {
+    local x=0
+    read -p "zadaj cele cislo: " x
+    echo $((x**2))
+    return 0
+}
 
+vysledok=$(mocnina)
+echo "mocnina zadaneho cisla je $vysledok"
 ```
+local - lokálna premenná
+[funkcie2.sh](./scripts/funkcie2.sh)
 
 ```shell
 #!/bin/bash

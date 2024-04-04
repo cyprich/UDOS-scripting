@@ -157,7 +157,7 @@ esac
 ```
 [vetvenie2.sh](./scripts/vetvenie2.sh)
 
-# 4 Cykly
+# 4. Cykly
 ### for
 ```shell
 #!/bin/bash
@@ -255,7 +255,7 @@ done
 ```
 PS3 - prompt pre výber
 
-# 5 Funkcie
+# 5. Funkcie
 ```shell
 #!/bin/bash
 # klasicka definicia funkcie
@@ -297,15 +297,53 @@ echo "mocnina zadaneho cisla je $vysledok"
 local - lokálna premenná
 [funkcie2.sh](./scripts/funkcie2.sh)
 
+# 6. Polia
+### indexované pole (array)
 ```shell
 #!/bin/bash
+# delaracia pola
+declare -a pole0
+pole0+=(nejake nahodne elementy)
+echo ${pole0[2]}
 
+# delkaracia pola priradenim hodnot
+pole=(jeden dva tri)
+echo ${pole[1]}
+
+# pridavanie do pola
+pole+=(styri pat "s e s t")
+echo ${pole[5]}
 ```
+[polia1.sh](./scripts/polia1.sh)
 
+### asociativne pole (dictionary)
 ```shell
 #!/bin/bash
+#!/bin/bash
+# deklaracia asociativneho pola
+declare -A pole
+pole=([auto]=car [strom]=tree [jablko]=apple)
+pole[voda]=water
 
+echo "auto sa povie ${pole[auto]}"
+echo "voda sa povie ${pole[voda]}"
+
+echo "pocet prvkov pola: ${#pole[@]}"
+echo "vsetky prvky: ${pole[*]}"
+
+echo "vsetky prvky cez for loop: "
+for i in ${pole[@]}
+do
+    echo $i
+done
+
+echo "vsetky kluce prvkov pola: "
+for i in ${!pole[@]}
+do
+    echo $i
+done
 ```
+[polia2.sh](./scrips/polia2.sh)
 
 ```shell
 #!/bin/bash

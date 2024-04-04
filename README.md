@@ -138,6 +138,143 @@ fi
 ```
 [vetvenie.sh](./scripts/vetvenie.sh)
 
+### case
+```shell
+#!/bin/bash
+read -p "Zadaj heslo: "
+
+case $REPLY in
+bumbac)
+    echo "Spravne heslo, vitajte $USER"
+    ;;
+heslo)
+    echo "Takto to nefunguje..."
+    ;;
+*)
+    echo "Nespravne heslo"
+    ;;
+esac
+```
+[vetvenie2.sh](./scripts/vetvenie2.sh)
+
+# 4 Cykly
+### for
+```shell
+#!/bin/bash
+# klasicky for
+for (( i = 0; i < 10; i++ ))
+do
+    echo $i
+done
+```
+
+```shell
+#!/bin/bash
+# pythonoidny for
+# vypise cisla od 1 po 15
+for i in $(seq 1 15)
+do
+    echo $i
+done
+```
+
+```shell
+#!/bin/bash
+# vypise pismena od A po F
+for i in {A..F}
+do
+    echo $i
+done
+```
+
+```shell
+#!/bin/bash
+# vypise vsetky argumenty
+for i in $@; do
+    echo $i
+done
+```
+[for.sh](./scripts/for.sh)
+
+
+### while
+```shell
+#!/bin/bash
+x=1
+while [ $x -le 5 ]
+do
+    echo "Variable X is now equal to $x"
+    x=$(( $x+1 ))
+done
+```
+
+```shell
+#!/bin/bash
+y=1
+while test $y -ne 10
+do
+    echo $y
+    ((y++))
+done
+```
+
+```shell
+#!/bin/bash
+# until - opak while - "while not"
+let z=3**3
+until [ $z -le 0 ]
+do
+    echo $z
+    let z--
+done
+```
+[while.sh](./scripts/while.sh)
+
+```shell
+#!/bin/bash
+
+```
+
+### select
+```shell
+#!/bin/bash
+a=5
+b=6
+PS3="vyberte si s operaciu: "
+select op in + - "*" / %
+
+do
+    case $op in
+    +|-|"*"|/|%)
+        echo "$a $op $b = $(($a $op $b))";;
+    *)
+        echo "koniec"
+        break;;
+    esac
+done
+```
+PS3 - prompt pre výber
+
+```shell
+#!/bin/bash
+
+```
+
+```shell
+#!/bin/bash
+
+```
+
+```shell
+#!/bin/bash
+
+```
+
+```shell
+#!/bin/bash
+
+```
+
 ```shell
 #!/bin/bash
 

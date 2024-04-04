@@ -1,13 +1,14 @@
 # Scripting
-## UDOS
+Scriptovanie na predmete UDOS
 
-## Hello World
+# 1. Základné srandičky
+### Hello World
 ```shell
 #!/bin/bash
-echo "Ahoj $USER, dnes je $(date)"
+echo "Hello World!"
 ```
 
-## Spúštanie súboru
+### Spúštanie súboru
 ```shell
 bash ahoj.sh
 ```
@@ -16,7 +17,7 @@ chmod u+x ahoj.sh
 ./ahoj.sh
 ```
 
-## Komentáre
+### Komentáre
 ```shell
 # Jednoriadkovy komentar
 : 'toto
@@ -24,38 +25,16 @@ je
 viacriadkovy
 komentar'
 ```
+[ahoj.sh](./scripts/ahoj.sh)
 
-## User input
-```shell
-#!/bin/bash
-read -p "Zadaj meno: " $MENO
-echo "Ahoj $MENO"
-
-read -t5 -p "Zadaj meno do 5 sekund: " $MENO
-read -n7 -p "Zadaj text, maximalne 7 znakov: " $TEXT
-read -s -p "Zadaj heslo: "  # nebude vidiet pri pisani
-```
-
-## Arguments
-```shell
-./helloworld.sh prvyArgument nejakyInyArgument 25 "Neviem vymysliet originalny priklad"
-```
-| Označenie     | Význam                                   |
-|---------------|------------------------------------------|
-| ${0} - ${225} | Prístup ku danému argumentu              |
-| $#            | Počet argumentov                         |
-| $@            | Zoznam argumentov ako samostatné reťazce |
-| $*            | Zoznam argumentov ako jeden reťazec      |
-
-
-# Variables
+# 2. Premenné
 ```shell
 #!/bin/bash
 N=10
 echo $N
 echo "Moje cislo: $N"
 ```
-
+### Operácie s premennými
 | Označenie        | Význam                                                                                                                 |
 |------------------|------------------------------------------------------------------------------------------------------------------------|
 | ${#N}            | Dĺžka premennej N                                                                                                      |
@@ -69,15 +48,40 @@ echo "Moje cislo: $N"
 | ${N%123}         | Z premennej N odstráň 123 **na konci**                                                                                 |
 | ${N,}<br/>${N,,} | Zmena **prvého** znaku premennej N na **malé písmeno**<br/>Zmena **všetkých** znakov premennej N na **malé písmeno**   |
 | ${N^}<br/>${N^^} | Zmena **prvého** znaku premennej N na **veľké písmeno**<br/>Zmena **všetkých** znakov premennej N na **veľké písmeno** |
+[variables.sh](./scripts/variables.sh)
+
+### User input
+```shell
+#!/bin/bash
+read -p "Zadaj meno: " $MENO
+echo "Ahoj $MENO"
+
+read -t5 -p "Zadaj meno do 5 sekund: " $MENO
+read -n7 -p "Zadaj text, maximalne 7 znakov: " $TEXT
+read -s -p "Zadaj heslo: "  # nebude vidiet pri pisani
+```
+[userInput.sh](./scripts/userInput.sh)
 
 
-## Návratová hodnota
+### Arguments
+```shell
+./helloworld.sh prvyArgument nejakyInyArgument 25 "Neviem vymysliet originalny priklad"
+```
+| Označenie     | Význam                                   |
+|---------------|------------------------------------------|
+| ${0} - ${225} | Prístup ku danému argumentu              |
+| $#            | Počet argumentov                         |
+| $@            | Zoznam argumentov ako samostatné reťazce |
+| $*            | Zoznam argumentov ako jeden reťazec      |
+
+### Návratová hodnota
+Exit status of last command
 ```shell
 #!/bin/bash
 echo $?
 ```
 
-## Aritmetické operácie
+### Aritmetické operácie
 ```shell
 #!/bin/bash
 echo $(( 2 + 6 ))  # + - * / %
@@ -86,8 +90,9 @@ echo $(( 2 < 4 ))  # > < >= <= == !=
 
 let RESULT=2**8
 ```
+[aritmetickeoperacie.sh](./scripts/aritmetickeoperacie.sh)
 
-## Logické operácie
+### Logické operácie
 |            |                                  |
 |------------|----------------------------------|
 | 0          | true                             |
@@ -104,7 +109,7 @@ Alebo príkazom test
 test $A -lt 10 -a $A -ge 0
 ```
 
-## Vetvenie
+# 3. Vetvenie
 ### if
 ```shell
 #!/bin/bash
@@ -131,6 +136,7 @@ else
   echo "zadali ste kladne cislo"
 fi
 ```
+[vetvenie.sh](./scripts/vetvenie.sh)
 
 ```shell
 #!/bin/bash
